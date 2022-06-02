@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Or Join Meeting</title>
+    <link rel="stylesheet" href="public/Assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="public/Assets/css/style.css">
+</head>
+<body style="padding-top: 3.5rem">
+    <nav class="navbar navbar-expand-md fixed-top">
+        <img src="public/Assets/images/google-meet-icon.png" class="logo" alt="" />
+        <a href="#" class="navbar-brand text-dark">TreePad Meet</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">At a glance</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">How it works</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Plan and Price</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mr-0">
+                <li class="nav-item sign-in display-center">
+                    <a href="#" class="nav-link">Sign in</a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-secondary btn-lg text-info font-weight-bold join-meeting">Join the meeting</button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-lg btn-info text-light font-weight-bold new-meeting">Start a meeting</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <div class="jumbotron h-100 d-flex">
+            <div class="container w-50">
+                <h1 style="font-size: 3rem;">Premium video meeting now available free for everyone.</h1>
+                <p style="font-size: 20px">Redesigned Google Meet service for truly secure business meetings.</p>
+                <ul class="display-center justify-content-start">
+                    <li style="padding:0">
+                        <button class="btn btn-lg text-light font-weight-bold display-center new-meeting" style="background-color: #01796b;">
+                            <span class="material-icons mr-2">video_call</span>
+                                New Meeting
+                        </button>
+                    </li>
+                    <li class="pl-3">
+                        <button class="btn btn-lg btn-outline-secondary text-dark font-weight-bold display-center" style="background-color: #ffffff;">
+                            <span class="material-icons mr-2">keyboard</span>
+                            <input class="enter-code" type="text" placeholder="Enter a code" style="border: none"/>
+                        </button>
+                    </li>
+                    <li class="text-dark pl-3 font-weight-bold cursor-pointer join-action">Join</li>
+                </ul>
+            </div>
+            <div class="container w-50">
+                <img class="signin-image" src="public/Assets/images/google-meet-people.jpg" alt="" />
+
+            </div>
+        </div>
+    </main>
+    <footer class="container">
+        <h6>Learn more about <span class="learn-more text-info">TreePad Meet</span></h6>
+    </footer>
+    <script scr="https://code.jquery.com.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const q = val => document.querySelector(val);
+        const qa = val => document.querySelectorAll(val);
+
+        q('.join-meeting')
+        .addEventListener('click', () => {
+            q('.enter-code').focus();
+        });
+
+        q('.join-action')
+        .addEventListener('click', () => {
+            const code = q('.enter-code').value;
+            if(code.length < 3) return alert('code is too short');
+            const url = `${window.location.origin}?meetingId=${code}`;
+            window.location.replace(url);
+        })
+
+        const newMeetingButtons = qa('.new-meeting');
+        for (i = 0; i < newMeetingButtons.length; ++i) {
+            newMeetingButtons[i]
+            .addEventListener('click', () => {
+            const code = `${Date.now()}-${Math.floor(Math.random() * 100000000)}`
+            const url = `${window.location.origin}?meetingId=${code}`;
+            window.location.replace(url);
+        })
+        }
+        
+
+        
+    </script>
+</body>
+</html>
