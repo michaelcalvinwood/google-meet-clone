@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="public/Assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="public/Assets/css/style.css">
-
+    <script src="./js/app.js"></script>
 </head>
 <body>
     <main class=" d-flex flex-column home-wrap">
@@ -194,5 +194,23 @@
             
         </div>
     </main>
+    <script>
+        const q = val => document.querySelector(val);
+
+        console.log(window.location.search);
+        const {search} = window.location; 
+        const loc = search.indexOf('=');
+        const meetingId = search.substring(loc + 1);
+        console.log(`Meeting ID: ${meetingId}`);
+        const userId = prompt('Enter your display name');
+        if (!userId) {
+            alert ('Please enter a display name to continue');
+            window.location.href = '/action.html';
+        }
+        q('#meetingContainer').style.display = 'flex';
+        console.log(MyApp());
+        MyApp()._init(userId, meetingId);
+        
+    </script>
 </body>
 </html>
