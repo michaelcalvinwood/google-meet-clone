@@ -1,6 +1,15 @@
 const MyApp = () => {
+    let socket = null;
+
+    const eventProcessForSignalingServer = () => {
+        socket = io.connect();
+        socket.on('connect', () => {
+            alert("socket connected");
+        })
+    }
+    
     const init = (userId, meetingId) => {
-        console.log(`hello ${userId}:${meetingId}`)
+        eventProcessForSignalingServer();
     }
     return ( {
         _init: (userId, meetingId) => {
@@ -8,3 +17,4 @@ const MyApp = () => {
         }
     })
 }
+

@@ -11,3 +11,6 @@ const rootFolder = path.join(__dirname, "");
 app.use(express.static(rootFolder));
 
 
+io.on('connection', socket => {
+    console.log(`${socket.id} has connected`);
+})
