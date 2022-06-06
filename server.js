@@ -1,3 +1,5 @@
+
+
 const express = require('express');
 const path = require('path');
 const app = express();
@@ -31,6 +33,15 @@ io.on('connection', socket => {
                     userId: userId,
                     connectionId: socket.id
                 })
+        })
+
+        socket.emit('otherUsers', otherUsers);
+    });
+
+    socket.on('SDPProcess', data => {
+        socket.to(data.toConnectionId).emit('SDPProcess', {
+            message: data.message,
+            fromConnectionId: socket.id
         })
     })
 })

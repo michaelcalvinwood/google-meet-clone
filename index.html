@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="public/Assets/css/style.css">
     <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
-    <script src="./js/app.js"></script>
 </head>
 <body>
     <main class=" d-flex flex-column home-wrap">
@@ -25,7 +24,7 @@
                             <img class="handRaise" src="/public/Assets/images/handRaise.png" style="position: absolute;height: 30px;top:8%; left: 3%;display: none;"/>
 
                          <!-- .....................HandRaise .................-->   
-                            <video autoplay muted id="locaVideoPlayer"></video>
+                            <video autoplay muted id="localVideoPlayer"></video>
                         </div>
                     </div>
                     <div id="otherTemplate" class="userbox display-center flex-column" style="display:none">
@@ -164,7 +163,7 @@
                 </div>   
             </div>
             <div class="bottom-middle d-flex just-content-center align-items-center" style="height: 10vh;">
-                <div class="mic-toggle-wrap action-icon-style display-center mr-2 cursor-pointer" id="miceMuteUnmute">
+                <div class="mic-toggle-wrap action-icon-style display-center mr-2 cursor-pointer" id="micMuteUnmute">
                     <span class="material-icons" style="width: 100%;">mic_off</span>
                 </div>
                 <div class="end-call-wrap action-icon-style display-center mr-2 cursor-pointer">
@@ -178,7 +177,7 @@
             <div class="bottom-right d-flex just-content-center align-items-center mr-3" id="screenShare-wrap" style="height: 10vh;">
                 <div class="present-now-wrap d-flex just-content-center flex-column align-items-center mr-5 cursor-pointer" id="ScreenShareOnOf">
                     <span class="material-icons">present_to_all</span>
-                    <div>Present Now</div>
+                    <div>Share Screen</div>
                 </div>
                 
                 <div class="option-wrap cursor-pointer display-center" style="height: 10vh; position:relative;">
@@ -195,9 +194,8 @@
             
         </div>
     </main>
+    <script src="./js/app.js"></script>
     <script>
-        const q = val => document.querySelector(val);
-
         console.log(window.location.search);
         const {search} = window.location; 
         const loc = search.indexOf('=');
@@ -208,8 +206,8 @@
             alert ('Please enter a display name to continue');
             window.location.href = '/action.html';
         }
-        q('#meetingContainer').style.display = 'flex';
-        console.log(MyApp());
+        q('#meetingContainer').style.display = '';
+        
         MyApp()._init(userId, meetingId);
         
     </script>

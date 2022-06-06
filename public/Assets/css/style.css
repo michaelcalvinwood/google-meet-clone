@@ -121,6 +121,7 @@ height: 600px;
 video{
     border: 1px solid gray;
     width: 300px;
+    border-radius: 4px;
 }
 .active{
     background-color: #00808047;
